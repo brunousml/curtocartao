@@ -1,14 +1,31 @@
-<h1>Contrib#index</h1>
-<div data-role="header">
-  <% p @cliente %>
-  <h1><%= "#{@cliente.nome} : #{@cliente.saldo}" unless @cliente.blank? %></h1>
-	<%= link_to 'Novo cliente', novo_cliente_consumo_path%>
+<div class="panel panel-default">
+  <div class="panel-heading"><h3><strong>Contribuições</strong> :: <%= link_to 'Novo cliente', novo_cliente_consumo_path, :class => "btn btn-primary" %></h3></div>
+  <div class="panel-body">
+    <div data-role="header">
+      <% p @cliente %>
+      <h1><%= "#{@cliente.nome} : #{@cliente.saldo}" unless @cliente.blank? %></h1>
+    </div>
+
+    <div data-role="content">
+               <style>table td{font-size: 13px;}</style>
+      <table class="table table-striped">
+        <tr>
+          <th>Cliente</th>
+          <th>Saldo</th>
+          <th>Ações</th>
+        </tr>
+        <tr>
+          <% @clientes.each do |cliente|%>
+              <td><%= link_to cliente.nome, detalhes_contrib_path(cliente.id), 'data-ajax' => "false" %></td>
+          <% end %>
+          <td>R$ 10,00</td>
+          <td><%= link_to 'Editar', novo_cliente_consumo_path, :class => "btn btn-primary" %> - Excluir</td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
 </div>
 
-<div data-role="content">
-	<ul data-role="listview" data-filter="true" data-inset='true' >
-		<% @clientes.each do |cliente|%>
-			<li><%= link_to cliente.nome, detalhes_contrib_path(cliente.id), 'data-ajax' => "false" %></li>
-		<% end %>
-	</ul>
-</div>
+
+

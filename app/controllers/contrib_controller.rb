@@ -3,7 +3,7 @@ class ContribController < ApplicationController
 
 	def index
 		@clientes = Cliente.order('nome')
-    render :layout => 'mobile'
+    #render :layout => 'mobile'
 	end
 
   def detalhes

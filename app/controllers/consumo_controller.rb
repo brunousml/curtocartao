@@ -2,7 +2,7 @@
 
 class ConsumoController < ApplicationController
 
-	layout "mobile"
+	layout "bootstrap"
 
 	def index
 		@clientes = Cliente.order('nome')
