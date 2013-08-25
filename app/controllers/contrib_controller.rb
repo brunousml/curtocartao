@@ -2,8 +2,8 @@ class ContribController < ApplicationController
 	layout "bootstrap"
 
 	def index
-		@clientes = Cliente.order('nome')
-    #render :layout => 'mobile'
+    @current_user = Cliente.find(3)
+    @clientes = Cliente.order('nome')
 	end
 
   def detalhes

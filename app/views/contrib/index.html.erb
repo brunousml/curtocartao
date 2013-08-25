@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading"><h3><strong>Contribuições</strong> :: <%= link_to 'Novo cliente', novo_cliente_consumo_path, :class => "btn btn-primary" %></h3></div>
+  <div class="panel-heading"><h3><strong>Contribuições</strong></h3></div>
   <div class="panel-body">
     <div data-role="header">
       <% p @cliente %>
@@ -14,13 +14,15 @@
           <th>Saldo</th>
           <th>Ações</th>
         </tr>
-        <tr>
+
           <% @clientes.each do |cliente|%>
+            <tr>
               <td><%= link_to cliente.nome, detalhes_contrib_path(cliente.id), 'data-ajax' => "false" %></td>
+              <td>R$ <%= cliente.saldo %></td>
+              <td><%= link_to 'Editar', novo_cliente_consumo_path, :class => "btn btn-warning" %> <%= link_to 'Excluir', novo_cliente_consumo_path, :class => "btn btn-danger" %></td>
+            </tr>
           <% end %>
-          <td>R$ 10,00</td>
-          <td><%= link_to 'Editar', novo_cliente_consumo_path, :class => "btn btn-primary" %> - Excluir</td>
-        </tr>
+
       </table>
 
     </div>

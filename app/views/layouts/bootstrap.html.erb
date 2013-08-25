@@ -8,7 +8,7 @@
   <meta name="author" content="">
   <link rel="shortcut icon" href="../../assets/ico/favicon.png">
 
-  <title>Navbar Template for Bootstrap</title>
+  <title>Curto Café</title>
 
   <!-- Bootstrap core CSS -->
   <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet">
@@ -26,10 +26,6 @@
 <body>
 
 <div class="container">
-
-
-
-
   <!-- Static navbar -->
   <div class="navbar navbar-default">
     <div class="navbar-header">
@@ -56,7 +52,30 @@
             <li><a href="/email/geral">Geral</a></li>
           </ul>
         </li>
+
+
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Consumo<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <% if @current_user  %><li><%= link_to "Detalhes", detalhes_consumo_path(@current_user.id), 'data-ajax' => "false" %></li><% end %>
+            <li><a href="/email/geral">Geral</a></li>
+          </ul>
+        </li>
       </ul>
+
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Clientes">
+        </div>
+        <button type="submit" class="btn btn-default">Buscar</button>
+        <%= link_to 'Novo cliente', novo_cliente_consumo_path, :class => "btn btn-primary" %>
+      </form>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if @current_user  %><li class="active"><a href="./"><div class="glyphicon glyphicon-user"></div> <%= @current_user.nome %></a></li>      <% end %>
+      </ul>
+
     </div><!--/.nav-collapse -->
   </div>
 
